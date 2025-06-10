@@ -1,0 +1,34 @@
+tasks=[]
+def show():
+    if not tasks:
+        print("No tasks.")
+    else:
+        for i,t in enumerate(tasks,1):
+            status="✓" if t[1] else "✗"
+            print(f"{i}. [{status}] {t[0]}")
+def add():
+    t=input("Enter new task: ")
+    tasks.append([t,False])
+def update():
+    i=int(input("Enter task number to mark complete: "))
+    if 0<i<=len(tasks):
+        tasks[i-1][1]=True
+def delete():
+    i=int(input("Enter task number to delete: "))
+    if 0<i<=len(tasks):
+        tasks.pop(i-1)
+def main():
+    while True:
+        print("\n1.Add 2.Mark Done 3.Delete 4.Show 5.Exit")
+        c=input("Choose: ")
+        if c=="1":
+            add()
+        elif c=="2":
+            update()
+        elif c=="3":
+            delete()
+        elif c=="4":
+            show()
+        elif c=="5":
+            break
+main()
